@@ -2,8 +2,8 @@
 
 namespace Johncarter\FilamentFocalPointPicker;
 
-use Spatie\LaravelPackageTools\Package;
 use Filament\PluginServiceProvider;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentFocalPointPickerServiceProvider extends PluginServiceProvider
 {
