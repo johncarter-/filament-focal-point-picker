@@ -11,7 +11,6 @@ class FilamentFocalPointPickerServiceProvider extends PluginServiceProvider
     {
         $package
             ->name('filament-focal-point-picker')
-            ->hasConfigFile()
             ->hasViews();
     }
 }
