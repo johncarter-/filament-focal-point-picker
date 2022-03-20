@@ -1,22 +1,7 @@
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # An image focal point picker for Filament Admin.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/johncarter/filament-focal-point-picker.svg?style=flat-square)](https://packagist.org/packages/johncarter/filament-focal-point-picker)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/johncarter/filament-focal-point-picker/run-tests?label=tests)](https://github.com/johncarter/filament-focal-point-picker/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/johncarter/filament-focal-point-picker/Check%20&%20fix%20styling?label=code%20style)](https://github.com/johncarter/filament-focal-point-picker/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/johncarter/filament-focal-point-picker.svg?style=flat-square)](https://packagist.org/packages/johncarter/filament-focal-point-picker)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/filament-focal-point-picker.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/filament-focal-point-picker)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+Reference a position on an image to act as its focal point, or focus. This can be used with the CSS `object-position` property to crop images on different aspect ratios.
 
 ## Installation
 
@@ -24,26 +9,6 @@ You can install the package via composer:
 
 ```bash
 composer require johncarter/filament-focal-point-picker
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-focal-point-picker-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-focal-point-picker-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
 ```
 
 Optionally, you can publish the views using
@@ -55,14 +20,18 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 ## Usage
 
 ```php
-$filamentFocalPointPicker = new Johncarter\FilamentFocalPointPicker();
-echo $filamentFocalPointPicker->echoPhrase('Hello, Johncarter!');
-```
+FileUpload::make('image')->maxFiles(1),
+FocalPointPicker::make('focal_point')
+    ->default('50% 50%')
+    ->image(function (Closure $get) {
+        $imageState = collect($get('image'))?->first();
 
-## Testing
+        if ($imageState instanceof TemporaryUploadedFile) {
+            return $imageState->temporaryUrl();
+        }
 
-```bash
-composer test
+        return is_string($imageState) ? asset('storage/' . $imageState) : null;
+    })
 ```
 
 ## Changelog
