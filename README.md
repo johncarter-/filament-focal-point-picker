@@ -25,7 +25,6 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 FileUpload::make('image')->maxFiles(1),
 FocalPointPicker::make('focal_point')
     ->default('50% 50%')
-    ->reactive()
     ->image(function (Closure $get) {
         $imageState = collect($get('image'))?->first();
 
@@ -40,7 +39,7 @@ FocalPointPicker::make('focal_point')
 Then in your blade template:
 ```twig
 <div class="aspect-w-16 aspect-h-5">
-    <img src="{{ $myPageData['image'] }}" class="object-cover h-full w-full" style="object-position: {{ $myPageData['focal_point'] }}" />
+    <img src="{{ $myPageData['image'] }}" class="object-cover w-full h-full" style="object-position: {{ $myPageData['focal_point'] }}" />
 </div>
 ```
 
