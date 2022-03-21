@@ -2,6 +2,6 @@
 
 All notable changes to `filament-focal-point-picker` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+## 0.1.0-beta.1 - 2022-03-21
 
 - initial release

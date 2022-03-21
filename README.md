@@ -1,7 +1,9 @@
 
 # An image focal point picker for Filament Admin.
 
-Reference a position on an image to act as its focal point, or focus. This can be used with the CSS `object-position` property to crop images on different aspect ratios.
+A custom field for [Filament Admin](https://github.com/laravel-filament/filament). The field allows you to save a position on an image to act as its focal point, or focus. This can be used with the CSS `object-position` property to crop images on different aspect ratios.
+
+The field returns a `string` with 2 percentages: distance from left, distance from top. e.g. `"17% 54%"`.
 
 ## Installation
 
