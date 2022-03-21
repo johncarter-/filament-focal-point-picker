@@ -37,6 +37,13 @@ FocalPointPicker::make('focal_point')
     })
 ```
 
+Then in your blade template:
+```twig
+<div class="aspect-w-16 aspect-h-5">
+    <img src="{{ $myPageData['image'] }}" class="object-cover h-full w-full" style="object-position: {{ $myPageData['focal_point'] }}" />
+</div>
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
