@@ -11,11 +11,10 @@
     x-data="{state: $wire.entangle('{{ $getStatePath() }}')}"
     x-on:close-modal.window="if($event.detail.save == true && $event.detail.id == 'focal-point-picker-{{ $getStatePath() }}' ) { state = $event.detail.focus; }">
     @if ($getImage())
-      {{-- <div class="text-sm text-gray-600 mb-2">Currently: <span class="text-gray-700 font-medium" x-text="state"></span></div> --}}
       <button
         class="focus:outline-none filament-tables-link text-primary-600 hover:text-primary-500 text-sm font-medium inline-flex space-x-1 items-center"
         type="button"
-        x-on:click="$dispatch('open-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', fieldId: '{{ $getStatePath() }}', currentFocus: state})">
+        x-on:click="$dispatch('open-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', currentFocus: state})">
         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
           <path d="M12,11a1,1,0,1,0,1,1A1,1,0,0,0,12,11Zm0-9A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,17.93V17a1,1,0,0,0-2,0v2.93A8,8,0,0,1,4.07,13H7a1,1,0,0,0,0-2H4.07A8,8,0,0,1,11,4.07V7a1,1,0,0,0,2,0V4.07A8,8,0,0,1,19.93,11H17a1,1,0,0,0,0,2h2.93A8,8,0,0,1,13,19.93Z" />
         </svg>
@@ -87,12 +86,12 @@
       <x-filament::button
         outlined
         color='secondary'
-        x-on:click="$dispatch('close-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', fieldId: '{{ $getStatePath() }}'})">
+        x-on:click="$dispatch('close-modal', {id: 'focal-point-picker-{{ $getStatePath() }}'})">
         Cancel
       </x-filament::button>
 
       <x-filament::button
-        x-on:click="$dispatch('close-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', fieldId: '{{ $getStatePath() }}', focus: leftPct + ' ' + topPct, save: true})">
+        x-on:click="$dispatch('close-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', focus: leftPct + ' ' + topPct, save: true})">
         Update and close
       </x-filament::button>
     </div>
