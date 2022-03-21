@@ -22,18 +22,10 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 ## Usage
 
 ```php
-FileUpload::make('image')->maxFiles(1),
+FileUpload::make('my_image_field')->maxFiles(1),
 FocalPointPicker::make('focal_point')
     ->default('50% 50%')
-    ->image(function (Closure $get) {
-        $imageState = collect($get('image'))?->first();
-
-        if ($imageState instanceof TemporaryUploadedFile) {
-            return $imageState->temporaryUrl();
-        }
-
-        return is_string($imageState) ? asset('storage/' . $imageState) : null;
-    })
+    ->image('my_image_field')
 ```
 
 Then in your blade template:

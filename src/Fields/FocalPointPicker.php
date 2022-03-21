@@ -11,11 +11,23 @@ class FocalPointPicker extends Field
 
     protected bool $hasDefaultState = true;
 
-    public string | Closure | null $image;
+    public ?Closure $image;
 
     public function image(string | Closure | null $image): static
     {
-        $this->image = $image;
+        if (is_string($image)) {
+            $this->image = function (Closure $get) use ($image) {
+                $imageState = collect($get($image))?->first();
+
+                if ($imageState instanceof TemporaryUploadedFile) {
+                    return $imageState->temporaryUrl();
+                }
+
+                return is_string($imageState) ? asset('storage/' . $imageState) : null;
+            };
+        } else {
+            $this->image = $image;
+        }
 
         return $this;
     }
