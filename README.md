@@ -5,8 +5,7 @@ A custom field for [Filament Admin](https://github.com/laravel-filament/filament
 
 The field returns a `string` with 2 percentages: distance from left, distance from top. e.g. `"17% 54%"`.
 
-![Screenshot 2022-03-21 145935](https://user-images.githubusercontent.com/3776888/159289408-45103560-5ac3-47a1-9de9-82739d9c3445.png)
-
+![](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/f888acf2-87a2-4ac5-95c4-eab9a80175ce.gif?ClientID=vimeo-core-prod&Date=1647882425&Signature=cce12ab8b760d269a1b3a3e1d88a60ff43b8bc6c)
 
 See this video for a demo: https://vimeo.com/690530672
 
