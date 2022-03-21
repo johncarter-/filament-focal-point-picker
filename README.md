@@ -23,6 +23,7 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 FileUpload::make('image')->maxFiles(1),
 FocalPointPicker::make('focal_point')
     ->default('50% 50%')
+    ->reactive()
     ->image(function (Closure $get) {
         $imageState = collect($get('image'))?->first();
 
