@@ -11,8 +11,9 @@
     x-data="{state: $wire.entangle('{{ $getStatePath() }}')}"
     x-on:close-modal.window="if($event.detail.save == true && $event.detail.id == 'focal-point-picker-{{ $getStatePath() }}' ) { state = $event.detail.focus; }">
     @if ($getImage())
+      <div class="mb-2 text-sm text-gray-600">Currently: <span class="font-medium text-gray-700" x-text="state"></span></div>
       <button
-        class="focus:outline-none filament-tables-link text-primary-600 hover:text-primary-500 text-sm font-medium inline-flex space-x-1 items-center"
+        class="inline-flex items-center space-x-1 text-sm font-medium focus:outline-none filament-tables-link text-primary-600 hover:text-primary-500"
         type="button"
         x-on:click="$dispatch('open-modal', {id: 'focal-point-picker-{{ $getStatePath() }}', currentFocus: state})">
         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -33,12 +34,12 @@
   x-on:open-modal.window="leftPct = $event.detail.currentFocus.split(' ')[0]; topPct = $event.detail.currentFocus.split(' ')[1]">
 
   <div class="flex flex-wrap sm:flex-nowrap">
-    <aside class="w-full sm:max-w-md bg-gray-100 self-start rounded-lg p-6">
+    <aside class="self-start w-full p-6 bg-gray-100 rounded-lg sm:max-w-md">
       <header class="w-full">
-        <h3 class="text-xl font-bold mb-4">Focal point picker</h3>
+        <h3 class="mb-4 text-xl font-bold">Focal point picker</h3>
       </header>
       <div>
-        <p class="text-sm mb-4">Click an area on the image below to set the focal point.</p>
+        <p class="mb-4 text-sm">Click an area on the image below to set the focal point.</p>
         <div class="relative">
           {{-- Image --}}
           <img
@@ -48,33 +49,33 @@
             src="{{ $getImage() }}">
           {{-- Marker --}}
           <div
-            class="absolute z-10 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-black border-2 border-white bg-opacity-50 pointer-events-none"
+            class="absolute z-10 w-5 h-5 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-50 border-2 border-white rounded-full pointer-events-none"
             :style="{ left: leftPct, top: topPct}"></div>
         </div>
       </div>
     </aside>
-    <main class="w-full sm:pt-6 mt-12 sm:mt-0 sm:pl-8 flex-1 flex flex-col">
+    <main class="flex flex-col flex-1 w-full mt-12 sm:pt-6 sm:mt-0 sm:pl-8">
       {{-- Preview --}}
       <header class="w-full">
-        <h3 class="text-xl font-bold mb-4">Preview</h3>
+        <h3 class="mb-4 text-xl font-bold">Preview</h3>
       </header>
       <div class="flex-1 grid grid-cols-3 grid-rows-3 w-full gap-6 min-h-[30rem]">
         <div class="relative col-span-2 row-span-2">
           <img
             src="{{ $getImage() }}"
-            class="absolute block object-cover h-full w-full"
+            class="absolute block object-cover w-full h-full"
             :style="{ 'object-position': leftPct + ' ' + topPct}">
         </div>
         <div class="relative row-span-2">
           <img
             src="{{ $getImage() }}"
-            class="absolute block object-cover h-full w-full"
+            class="absolute block object-cover w-full h-full"
             :style="{ 'object-position': leftPct + ' ' + topPct}">
         </div>
         <div class="relative col-span-3">
           <img
             src="{{ $getImage() }}"
-            class="absolute block object-cover h-full w-full"
+            class="absolute block object-cover w-full h-full"
             :style="{ 'object-position': leftPct + ' ' + topPct}">
         </div>
       </div>
@@ -82,7 +83,7 @@
   </div>
 
   <x-slot name="footer">
-    <div class="flex space-x-2 justify-end">
+    <div class="flex justify-end space-x-2">
       <x-filament::button
         outlined
         color='secondary'
