@@ -25,7 +25,7 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 FileUpload::make('my_image_field')->maxFiles(1),
 FocalPointPicker::make('focal_point')
     ->default('10% 25%') // default: "50% 50%"
-    ->image('my_image_field')
+    ->imageField('my_image_field')
 ```
 
 Then in your blade template:

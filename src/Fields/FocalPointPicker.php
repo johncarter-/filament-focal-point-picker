@@ -4,6 +4,7 @@ namespace Johncarter\FilamentFocalPointPicker\Fields;
 
 use Closure;
 use Filament\Forms\Components\Field;
+use Livewire\TemporaryUploadedFile;
 
 class FocalPointPicker extends Field
 {
@@ -11,7 +12,7 @@ class FocalPointPicker extends Field
 
     protected bool $hasDefaultState = true;
 
-    public ?Closure $image;
+    public ?Closure $image = null;
 
     protected function setUp(): void
     {
@@ -20,21 +21,22 @@ class FocalPointPicker extends Field
         $this->default('50% 50%');
     }
 
+    public function imageField(string $field): static
+    {
+        return $this->image(function (Closure $get) use ($field) {
+            $imageState = collect($get($field))?->first();
+
+            if ($imageState instanceof TemporaryUploadedFile) {
+                return $imageState->temporaryUrl();
+            }
+
+            return is_string($imageState) ? asset('storage/' . $imageState) : null;
+        });
+    }
+
     public function image(string | Closure | null $image): static
     {
-        if (is_string($image)) {
-            $this->image = function (Closure $get) use ($image) {
-                $imageState = collect($get($image))?->first();
-
-                if ($imageState instanceof TemporaryUploadedFile) {
-                    return $imageState->temporaryUrl();
-                }
-
-                return is_string($imageState) ? asset('storage/' . $imageState) : null;
-            };
-        } else {
-            $this->image = $image;
-        }
+        $this->image = $image;
 
         return $this;
     }
