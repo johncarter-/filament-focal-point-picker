@@ -1,0 +1,11 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "mix --production",
+        "watch": "mix watch"
+    },
+    "devDependencies": {
+        "laravel-mix": "^6.0.43",
+        "tailwindcss": "^3.0.23"
+    }
+}
