@@ -13,6 +13,13 @@ class FocalPointPicker extends Field
 
     public ?Closure $image;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->default('50% 50%');
+    }
+
     public function image(string | Closure | null $image): static
     {
         if (is_string($image)) {

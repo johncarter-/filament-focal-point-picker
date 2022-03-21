@@ -24,7 +24,7 @@ php artisan vendor:publish --tag="filament-focal-point-picker-views"
 ```php
 FileUpload::make('my_image_field')->maxFiles(1),
 FocalPointPicker::make('focal_point')
-    ->default('50% 50%')
+    ->default('10% 25%') // default: "50% 50%"
     ->image('my_image_field')
 ```
 
