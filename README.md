@@ -30,6 +30,10 @@ FileUpload::make('my_image_field')->maxFiles(1),
 FocalPointPicker::make('focal_point')
     ->default('10% 25%') // default: "50% 50%"
     ->imageField('my_image_field')
+    // Or, return an image url from a closure on the image() method
+    // ->image(function() {
+    //     return 'https://www.example.com/images/image1.jpg'
+    // })
 ```
 
 Then in your blade template:
