@@ -4,6 +4,7 @@ namespace Johncarter\FilamentFocalPointPicker\Fields;
 
 use Closure;
 use Filament\Forms\Components\Field;
+use Illuminate\Support\Facades\Storage;
 use Livewire\TemporaryUploadedFile;
 
 class FocalPointPicker extends Field
@@ -30,7 +31,7 @@ class FocalPointPicker extends Field
                 return $imageState->temporaryUrl();
             }
 
-            return is_string($imageState) ? asset('storage/' . $imageState) : null;
+            return is_string($imageState) ? Storage::url($imageState) : null;
         });
     }
 
