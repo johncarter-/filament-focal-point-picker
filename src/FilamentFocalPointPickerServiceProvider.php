@@ -3,8 +3,8 @@
 namespace Johncarter\FilamentFocalPointPicker;
 
 use Filament\Facades\Filament;
-use Filament\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentFocalPointPickerServiceProvider extends PackageServiceProvider
 {
