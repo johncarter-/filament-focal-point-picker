@@ -1,4 +1,5 @@
-<x-forms::field-wrapper
+<x-dynamic-component
+    :component="$getFieldWrapperView()"
   :id="$getId()"
   :label="$getLabel()"
   :label-sr-only="$isLabelHidden()"
@@ -25,7 +26,7 @@
       <span class="text-sm text-gray-500">{{ __('You need to provide an image.') }}</span>
     @endif
   </div>
-</x-forms::field-wrapper>
+</x-dynamic-component>
 
 <x-filament::modal
   width="7xl"
