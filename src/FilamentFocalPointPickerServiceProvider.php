@@ -3,10 +3,10 @@
 namespace Johncarter\FilamentFocalPointPicker;
 
 use Filament\Facades\Filament;
-use Filament\PluginServiceProvider;
+use Filament\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 
-class FilamentFocalPointPickerServiceProvider extends PluginServiceProvider
+class FilamentFocalPointPickerServiceProvider extends PackageServiceProvider
 {
     protected array $styles = [
         'filament-focal-point-picker' => __DIR__ . '/../resources/dist/css/filament-focal-point-picker.css',
