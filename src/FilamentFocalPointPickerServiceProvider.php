@@ -2,22 +2,28 @@
 
 namespace Johncarter\FilamentFocalPointPicker;
 
-use Filament\Facades\Filament;
-use Filament\PluginServiceProvider;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 
-class FilamentFocalPointPickerServiceProvider extends PluginServiceProvider
+class FilamentFocalPointPickerServiceProvider extends PackageServiceProvider
 {
-    protected array $styles = [
-        'filament-focal-point-picker' => __DIR__ . '/../resources/dist/css/filament-focal-point-picker.css',
-    ];
+    public static string $name = 'filament-focal-point-picker';
 
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('filament-focal-point-picker')
+            ->name(static::$name)
             ->hasAssets()
             ->hasViews()
             ->hasTranslations();
+    }
+
+    public function packageBooted(): void
+    {
+        FilamentAsset::register([
+            Css::make(static::$name, __DIR__ . '/../resources/dist/filament-focal-point-picker.css')->loadedOnRequest(),
+        ], 'johncarter/filament-focal-point-picker');
     }
 }

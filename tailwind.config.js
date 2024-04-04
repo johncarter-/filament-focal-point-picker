@@ -1,12 +1,6 @@
+const preset = require('./vendor/filament/filament/tailwind.config.preset')
+
 module.exports = {
-    content: [
-        './resources/views/**/*.blade.php'
-    ],
-    theme: {
-        extend: {},
-    },
-    plugins: [],
-    corePlugins: {
-        preflight: false,
-    }
+    presets: [preset],
+    content: ["./resources/**/*.blade.php"],
 }
