@@ -4,7 +4,7 @@ namespace Johncarter\FilamentFocalPointPicker\Forms\Components\Fields;
 
 use Closure;
 use Filament\Forms\Components\Field;
-use Filament\Forms\Get;
+use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
